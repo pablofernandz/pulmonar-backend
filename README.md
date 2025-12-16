@@ -1,6 +1,6 @@
 # Pulmonar — Backend (NestJS)
 
-Backend de un sistema de “Desarrollo Pulmonar”, creado como parte de mi TFG. Consiste en una aplicación web para el seguimiento de pacientes en un ensayo clínico. Provee una **API REST** para la gestión de usuarios/roles, pacientes, grupos, formularios/encuestas, evaluaciones, citas, notificaciones y estadísticas. El sistema usa **JWT** y control de acceso por rol. :contentReference[oaicite:0]{index=0}
+Backend de un sistema de “Desarrollo Pulmonar”, creado como parte de mi TFG. Consiste en una aplicación web para el seguimiento de pacientes en un ensayo clínico. Provee una **API REST** para la gestión de usuarios/roles, pacientes, grupos, formularios/encuestas, evaluaciones, citas, notificaciones y estadísticas. El sistema usa **JWT** y control de acceso por rol.
 
 ## Stack
 - **Node.js + TypeScript**
