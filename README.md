@@ -1,43 +1,56 @@
-# Pulmonar Backend (NestJS)
+# Pulmonar 2.0 — Backend (NestJS)
 
-Backend API para la plataforma **Pulmonar**. Implementa autenticación con JWT y endpoints organizados por módulos (usuarios, pacientes, encuestas, evaluaciones, estadísticas, etc.). Pensado para ser consumido por el frontend en Flutter.
+Backend del sistema “Desarrollo Pulmonar”, modernizado como parte del TFG. Provee una **API REST** para la gestión de usuarios/roles, pacientes, grupos, formularios/encuestas, evaluaciones, citas, notificaciones y estadísticas. El sistema usa **JWT** y control de acceso por rol. :contentReference[oaicite:0]{index=0}
 
 ## Stack
-- **Node.js + NestJS**
-- **TypeScript**
-- **TypeORM**
-- **MySQL**
-- **JWT Auth** (Passport)
-- Testing: **Jest** (e2e incluido en `/test`)
+- **Node.js + TypeScript**
+- **NestJS** (arquitectura modular, validación con DTOs, guards, etc.) :contentReference[oaicite:1]{index=1}
+- **TypeORM + MySQL** (modelo relacional)
+- **JWT** (auth)
+- **Swagger** (documentación del contrato de la API) :contentReference[oaicite:2]{index=2}
 
-## Módulos principales
-Según la estructura del proyecto:
-- `auth` (login, JWT, roles/guards)
-- `users`
-- `pacientes`
-- `revisores`
-- `coordinadores`
-- `surveys` (encuestas/cuestionarios)
-- `evaluations` (evaluaciones/respuestas)
-- `stats` (estadísticas)
-- `appointments` (citas)
-- `notifications`
-- `health` (healthcheck)
+## Funcionalidades principales (por áreas)
+- **Auth**: login y selección de rol.
+- **Users**: alta/listado/edición de usuarios (según rol).
+- **Pacientes**: gestión de pacientes y su información.
+- **Grupos**: asignación de pacientes y revisores, trazabilidad.
+- **Surveys/Formularios**: formularios con secciones, preguntas y respuestas.
+- **Evaluations**: creación y registro de evaluaciones y respuestas.
+- **Appointments/Citas**: citación y gestión de estado.
+- **Stats**: estadísticas globales y por paciente.
+- **Notifications**: notificaciones del sistema.
 
-> Nota: la API está estructurada con controladores/servicios/DTOs por módulo siguiendo buenas prácticas de NestJS.
+> En el sistema, el acceso se controla por rol a nivel de rutas/operaciones (p.ej., alta de usuario solo coordinador, pasar evaluación solo tutor). :contentReference[oaicite:3]{index=3}
 
----
+## Estructura del proyecto (resumen)
+src/
+main.ts
+config/ormconfig.ts
+data-source.ts
+common/pagination/
+health/
+modules/
+auth/
+users/
+pacientes/
+coordinadores/
+revisores/
+groups/
+surveys/
+evaluations/
+appointments/
+notifications/
+stats/
+test/
+
 
 ## Requisitos
-- Node.js (recomendado **LTS**)
-- MySQL (local o remoto)
+- Node.js (recomendado LTS)
+- MySQL (base de datos disponible y con el esquema esperado) :contentReference[oaicite:4]{index=4}
 
----
+## Configuración (.env)
+Este proyecto usa variables de entorno para conectar con la BD y configurar JWT.
 
-## Configuración
-
-### 1) Variables de entorno
-Crea tu `.env` a partir del ejemplo:
-
+1) Crea un `.env` a partir de `.env.example`:
 ```bash
 cp .env.example .env
